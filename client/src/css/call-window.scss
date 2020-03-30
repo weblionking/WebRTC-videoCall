@@ -1,0 +1,71 @@
+.call-window {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	opacity: 1;
+	z-index: -1;
+	@include bg-gradient(top, #030D10 0%, #030D10 100%);
+	
+	&.active {
+		z-index: auto;
+		display: grid;
+		padding: 20px;
+		grid-gap: 20px;
+		grid-template-columns: 1fr 1fr;
+	
+		.video-control {
+			z-index: auto;
+		}
+	}
+	
+	.video-control {
+		position: absolute;
+		bottom: 20px;
+		height: 72px;
+		width: 100%;
+		text-align: center;
+		opacity: 1;
+		z-index: -1;
+	}
+	
+	#localVideo {
+		width: 100%;
+	}
+	
+	#peerVideo {
+		width: 100%;
+	}
+}
+
+.video-control, .call-modal {
+	.btn-action {
+		$height: 50px;
+		height: $height;
+		width: $height;
+		line-height: $height;
+		margin: 0px 8px;
+		font-size: 1.4em;
+		text-align: center;
+		border-radius: 50%;
+		cursor: pointer;
+		transition-duration: 0.25s;
+		border: 2px solid white;
+		background-color: transparent;
+
+		&:hover {
+			opacity: 0.8;	
+		}
+		
+		&.hangup {
+			@include transform(rotate(135deg));
+		}
+		
+		&:not(.hangup) {
+			&.disable {
+				background-color: $red;
+			}
+		}
+	}
+}
